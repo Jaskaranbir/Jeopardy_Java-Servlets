@@ -19,25 +19,16 @@
 
             <table>
                 <tr>
-                    <td>
+                    <td>                        
                         <%
                             String[] opts = qu.getAnswers();
-                            int[] optSeq = new int[]{0, 1, 2, 3};
-                            Random rnd = new Random();
-                            for(int i = opts.length - 1; i > 0; i--){
-                                int x = rnd.nextInt(i+1);
-                                int a = optSeq[x];
-                                optSeq[x] = optSeq[i];
-                                optSeq[i] = a;
-                            }
-                        %>
+                            int[] optSeq = (int[]) session.getAttribute("optSeq");
                         
-                        <%
                             for (int i = 1; i < qu.getAnswers().length + 1; i++) {
                         %>
-                        <div <%= i == 1 ? "" : "class=\"radioDiv\"" %>>
+                        <div>
                             <input type="radio" class="radio" name="ans" value="<%= optSeq[i-1] + 1%>" id="<%= optSeq[i-1]%>" required />
-                            <label for="<%= optSeq[i-1]%>"><span></span><%= opts[optSeq[i-1]]%></label><br />
+                            <label for="<%= optSeq[i-1]%>"><span></span><%= opts[optSeq[i-1]]%></label>
                         </div>
 
                         <%

@@ -25,12 +25,12 @@ h2 {
     border-top-right-radius: 10px;
 }
 
-#radioButtons{
+#radioButtons {
     padding-left: 55px;
 }
 
-.radioDiv {
-    margin-top: 20px;
+#radioButtons td {
+    line-height: 66px;
 }
 
 .radio {

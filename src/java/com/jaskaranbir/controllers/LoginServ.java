@@ -41,6 +41,15 @@ public class LoginServ extends HttpServlet {
         
         Random rn = new Random();
         session.setAttribute("dailyDouble", new int[] {rn.nextInt(25), rn.nextInt(25)});
+        int[] optSeq = new int[]{0, 1, 2, 3};
+        for(int i = 0; i < 4; i++) {
+            int rndIndex = rn.nextInt(4);
+            int temp = optSeq[rndIndex];
+            optSeq[rndIndex] = optSeq[i];
+            optSeq[i] = temp;
+        }
+        
+        session.setAttribute("optSeq", optSeq);
         
         request.setAttribute("tableAnimClass", "first-run");
         request.getRequestDispatcher("board.jsp").forward(request, response);

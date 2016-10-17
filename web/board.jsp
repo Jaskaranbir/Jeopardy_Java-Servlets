@@ -71,11 +71,14 @@
                         ArrayList<Question> ques = (ArrayList) session.getAttribute("questions");
                         for (int j = 0; j < 5; j++) {
                             int index = i + (j * 5);
-                            String type = "submit";
-                            String dClass = "";
+                            String type, dClass;
                             if (!ques.get(index).isValid()) {
                                 type = "button";
                                 dClass = " disabled";
+                            }
+                            else {
+                                type = "submit";
+                                dClass = "";
                             }
                     %>
 
@@ -113,39 +116,21 @@
             var scoreField = document.getElementById("winNum");
             var curScore = parseInt(scoreField.textContent);
             
-            if(scoreDiff > 0) {
-                document.getElementById("winNum").className = "win-num-anim";
-                var playerWins = <%= player.getWins() %>;
-                
-                setInterval(function(){
-                    if(curScore < playerWins){
-                        curScore += Math.ceil(0.003 * scoreDiff);
-                        scoreField.textContent = curScore;
-                    }
-                    else {
-                        scoreField.textContent = playerWins;
-                        document.getElementById("winNum").className = "";
-                        clearInterval(this);
-                    }
-                },4);
-            }
+            document.getElementById("winNum").className = "win-num-anim";
+            var playerWins = <%= player.getWins() %>;
             
-            else if(scoreDiff < 0) {
-                document.getElementById("winNum").className = "win-num-anim";
-                var playerWins = <%= player.getWins() %>;
-                
-                setInterval(function(){
-                    if(curScore > playerWins){
-                        curScore += Math.ceil(0.003 * scoreDiff);
-                        scoreField.textContent = curScore;
-                    }
-                    else {
-                        scoreField.textContent = playerWins;
-                        document.getElementById("winNum").className = "";
-                        clearInterval(this);
-                    }
-                },4);
-            }            
+            var scoreStep = Math.ceil(0.003 * scoreDiff);
+            setInterval(function(){
+                if((scoreDiff > 0 && curScore < playerWins) || (scoreDiff < 0 && curScore > playerWins)){
+                    curScore += scoreStep;
+                    scoreField.textContent = curScore;
+                }
+                else {
+                    scoreField.textContent = playerWins;
+                    document.getElementById("winNum").className = "";
+                    clearInterval(this);
+                }
+            }, 4);            
         </script>
     </body>
 </html>
