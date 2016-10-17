@@ -1,0 +1,135 @@
+body {
+    background: #2b2b2b;
+    font-size: 30px;
+}
+
+#wrapper {
+    position: relative;
+    background-color: white;
+    margin-top: 120px;
+    width: 80%;
+    left: 50%;
+    border-radius: 10px;
+    transform: translateX(-50%);
+}
+
+h2 {
+    background-color: #ea6153;
+    margin: 0;
+    padding: 20px 0 20px 25px;
+    font-family: ubuntu;
+    font-size: 50px;
+    text-shadow: 3px 3px black;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#radioButtons{
+    padding-left: 55px;
+}
+
+.radioDiv {
+    margin-top: 20px;
+}
+
+.radio {
+    opacity: 0;
+    outline: none;
+}
+
+.radio + label {
+    display: inline-block;
+    font-family: Roboto;
+    color: #3b3b3b;
+    margin-left: -30px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.radio + label span {
+    display:inline-block;
+    background-color: #3b3b3b;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: background-color 0.5s;
+}
+
+.radio:checked + label span{
+    background-color: #ea6153;
+}
+
+#circle-svg {
+    text-align: right;
+    margin-right: 25px;
+}
+
+#countdown-circle {
+    padding: 5px;
+    stroke: #d8d8d8;
+    stroke-width: 5px;
+    fill: transparent;
+    stroke-dasharray: 967px;
+    stroke-dashoffset: 967px;
+    animation: stroke-countdown 2s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation-fill-mode: forwards;
+}
+
+@keyframes stroke-countdown {
+    70% {
+        fill: transparent;
+        stroke-dashoffset: 0;
+    }
+    
+    100%{
+        fill: #d8d8d8;
+    }
+}
+
+#countdown-text {
+    font-family: baloo;
+    font-size: 250px;
+    fill: white;
+    transition: fill 10s, stroke 10s;
+}
+
+.countdown-danger {
+    stroke: #3b3b3b;
+    fill: #ea6153 !important;
+}
+
+#button-container {
+    width: 100%;
+    background-color: #ea6153;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.button {
+    font-family: ubuntu;
+    position: relative;
+    font-size: 30px;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+}
+
+table {
+    width: 100%;
+    padding: 15px 27px;
+}
+
+.right-align {
+    text-align: right;
+}
+
+@media screen and (max-width: 720px) {
+    #circle-svg {
+        display: none;
+    }
+}

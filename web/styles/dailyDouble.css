@@ -1,0 +1,151 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5-Oct-2016, 5:33:27 PM
+    Author     : jaska
+*/
+
+#dailyDoubleForm {
+    margin-top: 40px;
+    position: relative;
+}
+
+#dailyDoubleForm.betForm-anim {
+    margin-top: auto;
+    height: 100vh;
+}
+
+#bettingForm {
+    display: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    perspective: 1000px;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: rotatey(90deg);
+    text-align: center;
+}
+
+#bettingForm.betForm-anim {
+    display: block;
+    animation: rot2 0.5s cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rot2 {
+    to {
+        transform: rotatey(0deg);
+        opacity: 1;
+    }
+}
+
+#DailyDouble-text {
+    position: relative;
+    font-size: 60px;
+    perspective: 1000px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+    text-align: center;
+    font-family: baloo;
+    color: white;
+    z-index: -1;
+}
+
+#DailyDouble-text.betForm-anim {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: rot 4s  cubic-bezier(0.69, 1.13, 0.01, 1.15);
+    animation-fill-mode: forwards;
+}
+
+@keyframes rot {
+    15% {
+        opacity: 1;
+        font-size: 100px;
+    }
+    60% {
+        top: 50%;
+        font-size: 100px;
+        transform:  translate(-50%, -50%) rotateY(0);
+        opacity: 1;
+    }
+    100% {
+        font-size: 100px;
+        top: 93px;
+        transform: translate(-50%, -50%) rotatey(90deg);
+        opacity: 0;
+    }
+}
+
+.form-container {
+    opacity: 0;
+    animation: fadeIn 1.3s;
+    animation-fill-mode: forwards;
+}
+
+.form-container.betForm-anim {
+    display: none;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.betLabel {
+    display: block;
+    position: relative;
+    opacity: 0;
+    cursor: text;
+    margin-left: 1px;
+    margin-top: 13px;
+    text-align: left;
+    font-size: 30px;
+    font-family: Roboto;
+    font-weight: bold;
+    top: 30px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    z-index: -1;
+    text-align: center;
+    color: white;
+}
+
+.fadein-bottom {
+    top: -10px;
+    opacity: 1;
+    cursor: initial;
+}
+
+#betField {
+    display: block;
+    margin: auto auto 35px auto;
+    width: 40%;
+    font-family: Roboto;
+    font-size: 50px;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    background: none;
+    text-align: center;
+    outline: none;
+    z-index: 1; 
+}
+
+#betButton {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 5px 13px;
+    cursor: pointer;
+    font-family: roboto;
+    font-size: 0.74em;
+}
