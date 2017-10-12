@@ -12,7 +12,7 @@ tries=20
 get_deploy_status
 while (( res != 200 && res != 302 && --tries != 0))
 do
-  echo "==> Waiting for project deployment pipeline (attempt: $((40 - $tries)) of 40)."
+  echo "==> Waiting for project deployment pipeline (attempt: $((20 - $tries)) of 20)."
   sleep 2
   get_deploy_status
 done
