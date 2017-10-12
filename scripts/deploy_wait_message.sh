@@ -8,16 +8,16 @@ function get_deploy_status() {
   res=$(curl --write-out %{http_code} --silent --output /dev/null localhost:8080/jeopardy)
 }
 
-tries=40
+tries=20
 get_deploy_status
 while (( res != 200 && res != 302 && --tries != 0))
 do
-  echo -n ". "
-  sleep 1
+  echo "==> Waiting for project deployment pipeline (attempt: $((40 - $tries)) of 40)."
+  sleep 2
   get_deploy_status
 done
 
-echo -e ".\n"
+echo
 
 if (( tries == 0 )); then
   for cntnr in $(docker ps -q)
