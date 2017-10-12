@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  maven:
+    # container_name: jeopardy_maven
+    image: maven:3.5-jdk-8-alpine
+    volumes:
+      - .:/opt/maven
+    working_dir: /opt/maven
+    command: ['mvn', 'clean', 'install']
+
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile_tomcat
+    # container_name: jeopardy_tomcat
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASS=1234
+    image: jeopardy_tomcat_img
+    depends_on:
+      - maven
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/src
+
+volumes:
+  sql-datavolume:
